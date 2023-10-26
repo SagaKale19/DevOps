@@ -1,0 +1,39 @@
+//step 1
+git config --global user.name""
+git config --global user.email""
+git config --list
+//step 2 
+git init
+//step 3
+git clone (url_github_repo)
+//step 4
+git remote add (url_github_repo)
+//step 5 for staging
+echo "msg">file.txt
+git add file.txt
+git commit -m "message"
+git status
+//step 6
+git branch branch_name
+git branch
+//to switch
+git checkout branch_name
+echo "msg">file1.txt
+add file1.txt
+git commit -m "msg"
+git init checkout main
+git merge
+//integrating changes
+git log
+//diff
+git diff
+git show
+//to push
+git remote add origin (url_github_repo)
+
+git push origin main
+//to pull
+git pull origin 
+
+//to remove origin
+git remove origin
