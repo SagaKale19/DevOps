@@ -1,0 +1,4 @@
+Step1: Create new maven project (abc)
+Step2: src/main/java > create package (abc) 
+Step3: In 'abc' package create class file (App.java)
+Step4: src/test/java > create package (Myproject) > create class (AppTest.java)
