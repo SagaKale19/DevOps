@@ -1,0 +1,100 @@
+STEP 1: Uninstall old versions
+● Uninstall any such older versions before attempting to install a new version
+$ sudo yum remove docker \
+docker-client \
+docker-client-latest \
+docker-common \
+docker-latest \
+docker-latest-logrotate \
+docker-logrotate \
+docker-engine
+
+
+STEP 2: Set up the repository
+$sudo yum install -y yum-utils
+$sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+
+STEP 3: Install Docker Engine
+$sudo yum install docker-ce docker-ce-cli containerd.io
+docker-buildx-plugin docker-compose-plugin
+
+STEP 4: Manage Docker as a non-root user
+Refer: https://docs.docker.com/engine/install/linux-postinstall/
+$ sudo groupadd docker
+$ sudo usermod -aG docker symsc40
+
+STEP 5: Running docker image
+1. Hello -world image
+$ docker run hello-world
+(Note: if you get permission denied error for above command, run
+$sudo chmod 666 /var/run/docker.sock)
+
+● With the following command you can check how many
+containers are running at current time:
+$docker ps
+● Following command will give list of container exist on the
+machine
+$docker ps -a
+● To get list of images present on the machine:
+$docker image ls
+● To remove image from the system it is essential to remove all
+containers that use the image in running or stopped state
+● To remove container:
+$docker rm container_id
+● To remove the image from the system:
+$docker rmi image_id
+
+2. Using Ubuntu image
+Pull the image: $docker image pull ubuntu:latest
+Check image list: $docker image ls
+Run ubuntu container in same terminal:
+$docker run -it image_id_of_ubuntu_image /bin/bash
+
+
+STEP 6: Creating docker container to run Django
+application
+
+● Create a directory (e.g docker_demo in home directory)
+● Open terminal
+● $cd docker_demo
+● $vi Dockerfile
+//Add following lines to the file
+
+FROM python:3
+ENV PYTHONUNBUFFERED 1
+RUN mkdir /app
+WORKDIR /app
+COPY requirements.txt /app/
+RUN pip install -r requirements.txt
+COPY . /app/
+
+● $vi requirements.txt
+//Add following lines to the file
+
+DJANGO==2.2
+
+● $ vi docker-compose.yml
+//Add following lines to the file
+
+version: '3'
+services:
+web:
+build: .
+command: python manage.py runserver 0.0.0.0:9000
+volumes:
+- .:/app
+ports:
+- "9000:9000"
+
+● $ sudo docker compose run web django-admin startproject mysite .
+● Check whether project is created or not: $ls -l
+● If access to the project is restricted only to root user the change the
+permissions: $sudo chown -R $USER:student .
+● Check updated permissions: $ls -l
+● Create and run the docker container: $docker compose up
+● Go to browser and enter the following URL: localhost:9000. If you see
+Django home page, that means Django has been successfully installed and
+running in the container.
+● You can not see the Django home page if you stop the container: $docker
+stop 72cac95cec2f (container_id of Django container)
+Refer: https://docs.docker.com/engine/install/centos/
