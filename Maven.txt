@@ -8,3 +8,4 @@ Step6: Help > Eclipse Marketplace > testNG(install) > Restart Eclipse
 Step7: AppTest > Run as > testNG
 
 WebDriver for testing
+Step 1: src/test/java > create package (Myproject) > create class (AppTest.java)
