@@ -1,0 +1,41 @@
+//Assign 4 to push maven proj to github repo go to eclipse worksapce and open cmd there in your hello world project of java
+git config --global user.name""
+git config --global user.email""
+git add . 
+git commit -m ""
+git remote add origin url
+git push origin master
+
+//Creating the pipeline
+● Start jenkins
+//using commands
+sudo systemctl enable jenkins
+sudo systemctl start jenkins
+sudo systemctl status jenkins
+
+● New Item → Pipeline →Give name to Pipeline (e.g. Maven_Pipeline) →OK
+● A window will open to specify details about pipeline
+○ Add description
+○ Check the following checkbox
+
+tick - Github project → Add URL of Github repository
+
+○ Build Triggers
+
+tick- Build whenever a SNAPSHOT dependency is built
+tick- GitHub hook trigger for GITScm polling
+
+○ Pipeline
+■ From dropdown list select Pipeline Script
+■ Inside the text area from dropdown list select Hello World
+■ A script will be generated
+tick-Use Groovy sandbox
+
+○ Click Apply
+○ Click Save
+● Click on Build Now and monitor the build.
+
+● Check console output.
+STEP 4: Checking the status on committing changes in GitHub
+● Make some changes in the Github repository and check the triggers that
+automatically start building the pipeline in the jenkins.
