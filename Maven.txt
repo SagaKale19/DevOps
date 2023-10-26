@@ -1,4 +1,10 @@
+To perform testing using Selenium
 Step1: Create new maven project (abc)
-Step2: src/main/java > create package (abc) 
-Step3: In 'abc' package create class file (App.java)
-Step4: src/test/java > create package (Myproject) > create class (AppTest.java)
+Step2: src/main/java > create package (abc) > create class file (App.java)
+Step3: src/test/java > create package (Myproject) > create class (AppTest.java)
+Step4: src/main/resources > create file (config.properties) > username=Sagarika password=Ishika
+Step5: Add dependencies in (pom.xml) [webdrivermanager, testng, selenium-api, selenium-chrome-driver]
+Step6: Help > Eclipse Marketplace > testNG(install) > Restart Eclipse
+Step7: AppTest > Run as > testNG
+
+WebDriver for testing
